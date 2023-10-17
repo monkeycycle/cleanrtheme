@@ -88,7 +88,7 @@ create_footer <- function (source_name) {
   #Make the footer
   footer <- grid::grobTree(grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
                            grid::textGrob(source_name,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=16))
+                                          x = 0.004, hjust = 0, gp = grid::gpar(fontfamily="Avenir", fontsize=10))
                            )
   return(footer)
 

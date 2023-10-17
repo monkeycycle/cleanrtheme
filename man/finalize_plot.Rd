@@ -9,8 +9,7 @@ finalize_plot(
   source_name,
   save_filepath = file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
   width_pixels = 640,
-  height_pixels = 450,
-  logo_image_path = file.path(system.file("data", package = "bbplot"), "placeholder.png")
+  height_pixels = 450
 )
 }
 \arguments{
@@ -22,9 +21,7 @@ finalize_plot(
 
 \item{width_pixels}{Width in pixels that you want to save your chart to - defaults to 640}
 
-\item{height_pixels}{Height in pixels that you want to save your chart to - defaults to 450}
-
-\item{logo_image_path}{File path for the logo image you want to use in the right hand side of your chart,
+\item{height_pixels}{Height in pixels that you want to save your chart to - defaults to 450
 which needs to be a PNG file - defaults to BBC blocks image that sits within the data folder of your package}
 }
 \value{
@@ -39,8 +36,7 @@ finalize_plot(plot_name = myplot,
 source = "The source for my data",
 save_filepath = "filename_that_my_plot_should_be_saved_to-nc.png",
 width_pixels = 640,
-height_pixels = 450,
-logo_image_path = "logo_image_filepath.png"
+height_pixels = 450
 )
 
 }

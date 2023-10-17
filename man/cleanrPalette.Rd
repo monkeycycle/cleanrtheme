@@ -13,5 +13,5 @@ cleanrPalette(n = 5)
 This function outputs n colours from the cleanr ggplot2 theme palette
 }
 \seealso{
-\code{\link{cleanrCols}}
+\code{\link{cleanrColours}}
 }

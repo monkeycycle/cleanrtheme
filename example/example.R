@@ -3,8 +3,8 @@ if (!require('upstartr')) install.packages('upstartr'); library('upstartr')
 if (!require('devtools')) install.packages('devtools'); library('devtools')
 if (!require('extrafont')) install.packages('extrafont'); library('extrafont')
 library(ggplot2) ; library(tidyverse) ; library(scales) ; library(svglite)
-# devtools::install_github("monkeycycle/cleanrtheme", force = TRUE)
-# library(cleanrtheme)
+devtools::install_github("monkeycycle/cleanrtheme", force = TRUE)
+library(cleanrtheme)
 
 # load some data
 df <- data.frame(
@@ -17,7 +17,7 @@ plot <- df %>%
   arrange(count) %>%
   mutate(religion = factor(religion, levels = religion)) %>%
   ggplot(aes(religion, count)) +
-  geom_col(show.legend = FALSE, fill=cleanrCols[3]) +
+  geom_col(show.legend = FALSE, fill=cleanrColours[5]) +
   geom_text(aes(label = comma(count)), colour = "#212121", size = 3.3, hjust = 0, nudge_y = 2000) +
   scale_y_continuous(label = comma, limits=c(0, 200000), expand = c(0,0)) +
   coord_flip() +
@@ -31,13 +31,13 @@ plot <- df %>%
 
 
 # save as png, svg or pdf
-ggsave("plots/example.png", dpi = 300, scale = 1)
-ggsave("plots/example.svg", dpi = 300, scale = 1)
+ggsave("example/plots/example.png", dpi = 300, scale = 1)
+ggsave("example/plots/example.svg", dpi = 300, scale = 1)
 
 # finalize_plot(plot_final, plot, 'plots/', width_pixels = 640, height_pixels = 450)
 
 finalize_plot(plot_name = plot,
-              source = "Source: Gapminder",
-              save_filepath = "plots/plot.png",
+              source = "Source: Religious",
+              save_filepath = "example/plots/plot.png",
               width_pixels = 640,
               height_pixels = 450)

@@ -4,7 +4,7 @@
 \alias{theme_cleanr}
 \title{cleanr theme}
 \usage{
-theme_cleanr(family = "Calibri")
+theme_cleanr(type_family = "Avenir", type_size = 12)
 }
 \arguments{
 \item{family}{Change the font family. Defaults to Fira Sans}

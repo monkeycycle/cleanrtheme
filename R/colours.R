@@ -4,12 +4,12 @@
 #'
 #' @param n the number of colours to output
 #'
-#' @seealso \code{\link{cleanrCols}}
+#' @seealso \code{\link{cleanrColours}}
 #'
 #' @export
 cleanrPalette <- function(n = 5) {
-  if (n == 4) return(cleanrCols[c(1, 3, 4, 5)])
-  grDevices::colorRampPalette(cleanrCols, space = "Lab")(n)
+  if (n == 4) return(cleanrColours[c(1, 3, 4, 5)])
+  grDevices::colorRampPalette(cleanrColours, space = "Lab")(n)
 }
 
 #' cleanr theme colours
@@ -20,9 +20,12 @@ cleanrPalette <- function(n = 5) {
 #' @seealso \code{\link{cleanrPalette}}
 #'
 #' @export
-cleanrCols <- c("#413E38", "#5F787F", "#C9773C", "#81969D", "#CBA78D", "#2E3B3E")
+cleanrColours <- c("#413E38", "#5F787F", "#C9773C", "#81969D", "#CBA78D", "#2E3B3E")
 
-cleanrColsAlt <- c("#DBD9D5", "#DEE5E6", "#F4E4D8", "#E6EAEB", "#F5EDE8", "#D1DBDD")
+cleanrColoursAlt <- c("#DBD9D5", "#DEE5E6", "#F4E4D8", "#E6EAEB", "#F5EDE8", "#D1DBDD")
+
+cleanrColors <- cleanrColours
+cleanrColorsAlt <- cleanrColoursAlt
 
 #' cleanr discrete colour scales
 #'
@@ -39,7 +42,7 @@ cleanrColsAlt <- c("#DBD9D5", "#DEE5E6", "#F4E4D8", "#E6EAEB", "#F5EDE8", "#D1DB
 #' @export
 scale_fill_cleanr <- function(..., continuous = FALSE) {
   if (continuous) {
-    pal <- grDevices::colorRampPalette(c(cleanrCols[1], cleanrCols[5]),
+    pal <- grDevices::colorRampPalette(c(cleanrColours[1], cleanrColours[5]),
                                        space = "Lab")
     return(ggplot2::scale_fill_gradientn(..., colours = pal(256)))
   }
@@ -51,7 +54,7 @@ scale_fill_cleanr <- function(..., continuous = FALSE) {
 #' @export
 scale_colour_cleanr <- function(..., continuous = FALSE) {
   if (continuous) {
-    pal <- grDevices::colorRampPalette(c(cleanrCols[1], cleanrCols[5]),
+    pal <- grDevices::colorRampPalette(c(cleanrColours[1], cleanrColours[5]),
                                        space = "Lab")
     return(ggplot2::scale_colour_gradientn(..., colours = pal(256)))
   }
