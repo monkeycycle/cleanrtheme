@@ -31,7 +31,7 @@ theme_cleanr <- function(type_family = "Avenir", type_size = 12) {
         ggplot2::theme(
 
           # Explicitly set panel and plot background to white to avoid transparency leaks in some graphics devices.
-          panel.background = ggplot2::element_rect(fill = "#ffffff", colour = NA),
+          panel.background = ggplot2::element_rect(fill = "#ffffff", colour = "#ffffff"),
           panel.border = ggplot2::element_blank(),
           panel.spacing = grid::unit(rep(0, 4), "cm"),
 
@@ -43,15 +43,18 @@ theme_cleanr <- function(type_family = "Avenir", type_size = 12) {
           panel.grid.minor.y = ggplot2::element_blank(),
 
 
-          plot.background = ggplot2::element_rect(fill = "#ffffff", colour = "#ffffff"),
-          plot.margin = ggplot2::margin(20,30,30,10),
+          plot.background = ggplot2::element_rect(fill = "#ffffff", colour = "#ffffff", size=1),
+          plot.margin = ggplot2::margin(20,40,10,10),
 
 
-          plot.title = ggplot2::element_text(size=18, face="bold", color="#222222", margin=ggplot2::margin(b=10)),
-          plot.subtitle = ggplot2::element_text(size=14, margin=ggplot2::margin(b=15)),
+          plot.title = ggplot2::element_text(size=18, face="bold", color="#222222", margin=ggplot2::margin(b=5), hjust=0),
+          plot.subtitle = ggplot2::element_text(size=14, margin=ggplot2::margin(b=10), hjust=0),
           # This leaves the caption text element empty, because it is set elsewhere in the finalise plot function
           plot.caption = ggplot2::element_blank(),
 
+          plot.title.position = "plot",
+          # plot.subtitle.position = "plot",
+          plot.caption.position = "plot",
 
           axis.title = ggplot2::element_text(size = 12, colour = "#454545", face="bold"),
           axis.text = ggplot2::element_text(size = 10, colour = "#212121"),
@@ -73,30 +76,3 @@ theme_cleanr <- function(type_family = "Avenir", type_size = 12) {
 
 }
 
-
-#' Save plots that use the cleanr theme
-#'
-#' This function behaves like \code{ggsave} but automatically embeds the fira
-#' font if the output format requires it. Install 64-bit GhostScript for this
-#' functionality. Currently only works automatically on Windows. For other
-#' platforms, run the following with the _correct_ location to the installed
-#' GhostScript Binary: Sys.setenv(R_GSCMD = "bin/gs/gs9.23/binaryname")
-#'
-#' @param filename path to a file
-#' @param device which type of output device to use
-#' @param ... other arguments passed to ggsave
-#'
-#' @seealso \code{\link[ggplot2]{ggsave}}
-#'
-#' @export
-cleanrSave <- function(filename = "plot.pdf", device = "pdf", ...) {
-  needsFont <- device == "pdf" || device == "eps" || device == "ps"
-
-  # set up ghostscript if needed
-  if (Sys.getenv("R_GSCMD") == "" && needsFont) setupGhostScript()
-
-  # save the image
-  ggplot2::ggsave(filename = filename, device = device, ...)
-
-  if (needsFont) extrafont::embed_fonts(filename)
-}

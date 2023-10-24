@@ -86,9 +86,9 @@ left_align <- function(plot_name, pieces){
 
 create_footer <- function (source_name) {
   #Make the footer
-  footer <- grid::grobTree(grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
+  footer <- grid::grobTree(
                            grid::textGrob(source_name,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontfamily="Avenir", fontsize=10))
+                                          x = 0.015, hjust = 0, gp = grid::gpar(fontfamily="Avenir", fontsize=10))
                            )
   return(footer)
 
@@ -125,7 +125,7 @@ finalize_plot <- function(plot_name,
   footer <- create_footer(source_name)
 
   #Draw your left-aligned grid
-  plot_left_aligned <- left_align(plot_name, c("subtitle", "title", "caption"))
+  plot_left_aligned <- left_align(plot_name, c("title", "subtitle", "caption"))
   plot_grid <- ggpubr::ggarrange(plot_left_aligned, footer,
                                  ncol = 1, nrow = 2,
                                  heights = c(1, 0.045/(height_pixels/450)))
@@ -135,7 +135,4 @@ finalize_plot <- function(plot_name,
   ## variable or silently ignored.
   invisible(plot_grid)
 }
-
-
-
 

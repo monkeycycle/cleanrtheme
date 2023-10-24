@@ -2,6 +2,13 @@
 if (!require('upstartr')) install.packages('upstartr'); library('upstartr')
 if (!require('devtools')) install.packages('devtools'); library('devtools')
 if (!require('extrafont')) install.packages('extrafont'); library('extrafont')
+
+library(grid)
+library(scales)
+library(tidyverse)
+loadfonts(quiet = TRUE)
+
+
 library(ggplot2) ; library(tidyverse) ; library(scales) ; library(svglite)
 devtools::install_github("monkeycycle/cleanrtheme", force = TRUE)
 library(cleanrtheme)
@@ -30,12 +37,7 @@ plot <- df %>%
   scale_fill_cleanr()
 
 
-# save as png, svg or pdf
-ggsave("example/plots/example.png", dpi = 300, scale = 1)
-ggsave("example/plots/example.svg", dpi = 300, scale = 1)
-
 # finalize_plot(plot_final, plot, 'plots/', width_pixels = 640, height_pixels = 450)
-
 finalize_plot(plot_name = plot,
               source = "Source: Religious",
               save_filepath = "example/plots/plot.png",
