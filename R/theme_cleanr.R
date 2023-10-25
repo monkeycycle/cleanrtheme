@@ -20,14 +20,13 @@
 #'   theme_cleanr() +
 #'   scale_colour_cleanr()
 #'
-#' @seealso \code{\link{cleanrSave}}
 #'
 #' @export
-theme_cleanr <- function(type_family = "Avenir", type_size = 12) {
+theme_cleanr <- function(type_family = "Helvetica", type_size = 12) {
 
       # if (!fontsReady()) setupFont()
       ggplot2::`%+replace%`(
-        ggplot2::theme_bw(base_size = type_size, base_family = type_family),
+        ggplot2::theme_bw(base_family = type_family, base_size = type_size),
         ggplot2::theme(
 
           # Explicitly set panel and plot background to white to avoid transparency leaks in some graphics devices.

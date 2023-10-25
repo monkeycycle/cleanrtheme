@@ -13,6 +13,7 @@ library(ggplot2) ; library(tidyverse) ; library(scales) ; library(svglite)
 devtools::install_github("monkeycycle/cleanrtheme", force = TRUE)
 library(cleanrtheme)
 
+
 # load some data
 df <- data.frame(
   religion = c("Christian", "Buddhist", "Hindu", "Jewish", "Muslim", "Sikh", "Other Religion", "No Religion", "Not Stated"),
@@ -24,14 +25,16 @@ plot <- df %>%
   arrange(count) %>%
   mutate(religion = factor(religion, levels = religion)) %>%
   ggplot(aes(religion, count)) +
-  geom_col(show.legend = FALSE, fill=cleanrColours[5]) +
+  geom_col(show.legend = FALSE, fill=cleanrColours[5], alpha=.6) +
+  geom_col(data = df %>% filter(religion == "No Religion"), show.legend = FALSE, fill=cleanrColours[2]) +
+
   geom_text(aes(label = comma(count)), colour = "#212121", size = 3.3, hjust = 0, nudge_y = 2000) +
   scale_y_continuous(label = comma, limits=c(0, 200000), expand = c(0,0)) +
   coord_flip() +
   labs(x = NULL, y = "Residents",
-       title = "A fifth of Trafford's residents have no religion",
+       title = "A fifth of residents have no religion",
        subtitle = "Religious affiliation, 2011",
-       caption = "Source: Table KS209EW, Census 2011  |  @traffordDataLab") +
+       ) +
   theme_cleanr() +
   scale_colour_cleanr() +
   scale_fill_cleanr()
@@ -39,7 +42,7 @@ plot <- df %>%
 
 # finalize_plot(plot_final, plot, 'plots/', width_pixels = 640, height_pixels = 450)
 finalize_plot(plot_name = plot,
-              source = "Source: Religious",
+              source = "Source: Sample Census 2011",
               save_filepath = "example/plots/plot.png",
               width_pixels = 640,
               height_pixels = 450)
