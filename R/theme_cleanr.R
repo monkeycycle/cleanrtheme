@@ -52,14 +52,12 @@ theme_cleanr <- function(type_family = "Helvetica", type_size = 12) {
           plot.caption = ggplot2::element_blank(),
 
           plot.title.position = "plot",
-          # plot.subtitle.position = "plot",
           plot.caption.position = "plot",
 
-          axis.title = ggplot2::element_text(size = 12, colour = "#454545", face="bold"),
-          axis.text = ggplot2::element_text(size = 10, colour = "#212121"),
+          axis.title = ggplot2::element_text(size = 12, colour = "#454545", face="bold", margin = ggplot2::margin(b = 10)),
+          axis.text = ggplot2::element_text(size = 10, colour = "#212121", margin = ggplot2::margin(b = 10)),
           axis.ticks = ggplot2::element_line(color = "#454545", size = 0.3),
           axis.line = ggplot2::element_line(color = "#454545", size = 0.3),
-
 
           legend.background = ggplot2::element_rect(fill = "transparent", colour = NA),
           legend.key = ggplot2::element_rect(fill = "transparent",colour = NA),
