@@ -20,7 +20,7 @@ cleanrPalette <- function(n = 5) {
 #' @seealso \code{\link{cleanrPalette}}
 #'
 #' @export
-cleanrColours <- c("#413E38", "#5F787F", "#C9773C", "#81969D", "#CBA78D", "#2E3B3E")
+cleanrColours <- c("#232D30", "#4D656C", "#BC632E", "#6D848B", "#BE967B", "#C5B0A0", "#2E3B3E")
 
 cleanrColoursAlt <- c("#DBD9D5", "#DEE5E6", "#F4E4D8", "#E6EAEB", "#F5EDE8", "#D1DBDD")
 

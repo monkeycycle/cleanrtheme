@@ -25,10 +25,12 @@ plot <- df %>%
   arrange(count) %>%
   mutate(religion = factor(religion, levels = religion)) %>%
   ggplot(aes(religion, count)) +
-  geom_col(show.legend = FALSE, fill=cleanrColours[5], alpha=.6) +
-  geom_col(data = df %>% filter(religion == "No Religion"), show.legend = FALSE, fill=cleanrColours[2]) +
+  geom_col(show.legend = FALSE, fill=cleanrColours[5], alpha=.8) +
+  geom_text(data = df %>% filter(religion != "No Religion"), aes(label = comma(count)), colour = "#212121", size = 3.3, hjust = 0, nudge_y = 2000) +
 
-  geom_text(aes(label = comma(count)), colour = "#212121", size = 3.3, hjust = 0, nudge_y = 2000) +
+  geom_col(data = df %>% filter(religion == "No Religion"), show.legend = FALSE, fill=cleanrColours[2]) +
+  geom_text(data = df %>% filter(religion == "No Religion"), aes(label = comma(count)), colour = "#212121", size = 3.3, hjust = 0, nudge_y = 2000) +
+
   scale_y_continuous(label = comma, limits=c(0, 200000), expand = c(0,0)) +
   coord_flip() +
   labs(x = NULL, y = "Residents",
